@@ -1,3 +1,4 @@
+<h3>Character info</h3>
 <p>
   <strong>Name:</strong>
   <%= @character.name %>
@@ -6,6 +7,10 @@
 <p>
   <strong>Picture:</strong>
 <%= image_tag(@character.picture_url, width: 200) if @character.picture.present? %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @character.user_id %>
 </p>
 
 <h3>Trademarks</h3>
@@ -17,8 +22,9 @@
     <br>
     <strong>Picture:
     <%= image_tag(trademark.picture_url, width: 100) if trademark.picture.present? %></strong>
-    <br>
-    <p><%= link_to 'Delete', trademark_path(trademark), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <br><br>
+    <%= link_to 'Delete', trademark_path(trademark), method: :delete, data: { confirm: 'Are you sure?' } %> &nbsp;
+    <%= link_to 'Edit', edit_trademark_path(trademark) %><br><br>
   </div>
 <% end %>
 <%=paginate @trademarks%>

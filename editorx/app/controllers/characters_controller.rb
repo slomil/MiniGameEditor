@@ -1,11 +1,13 @@
 class CharactersController < ApplicationController
   before_action :set_character, only: [:show, :edit, :update, :destroy]
 
+
   # GET /characters
   # GET /characters.json
   def index
     @characters = Character.all
     @characters=Kaminari.paginate_array(@characters).page(params[:page]).per(4)
+    
   end
 
   # GET /characters/1
@@ -29,7 +31,7 @@ class CharactersController < ApplicationController
   # POST /characters.json
   def create
     @character = Character.new(character_params)
-
+    @character.user_id = current_user.id
     respond_to do |format|
       if @character.save
         format.html { redirect_to @character, notice: 'Character was successfully created.' }
@@ -73,6 +75,6 @@ class CharactersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def character_params
-      params.require(:character).permit(:name, :picture)
+      params.require(:character).permit(:name, :picture, :user_id)
     end
 end

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @trademark.name %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @trademark.value %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= image_tag(@trademark.picture_url, width: 100) if @trademark.picture.present? %>
+</p>
+
+<p>
+  <strong>Character:</strong>
+  <%= @trademark.character_id %>
+</p>
+
+<%= link_to 'Edit', edit_trademark_path(@trademark) %> |
+<%= link_to 'Back', trademarks_path %>

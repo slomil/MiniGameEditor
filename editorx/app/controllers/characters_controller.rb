@@ -11,6 +11,9 @@ class CharactersController < ApplicationController
   # GET /characters/1
   # GET /characters/1.json
   def show
+  	@trademarks = @character.trademarks.all
+	  @trademark = @character.trademarks.build
+    @trademarks=Kaminari.paginate_array(@trademarks).page(params[:page]).per(2)
   end
 
   # GET /characters/new
